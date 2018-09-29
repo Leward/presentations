@@ -1,0 +1,273 @@
+= Iron Oxyde is the new thing
+:source-highlighter: highlightjs
+
+== Why learn a new language? 
+
+* Why not
+* View things from a different angle
+* A different way of writing software
+* It's fun
+* Out of frustration
+
+== You said frustration?
+
+.My way of working
+image::http://imthelion.com/wp-content/uploads/2017/09/frustration-at-work_web-1.jpg[]
+
+== Frustration
+
+[%step]
+- Bloated software
+- My experience with RAD frameworks built on top of other frameowkrs 
+    (I still <3 you Groovy & Grails)
+- `null` everywhere
+- Loose track of how things work (abstractions are nice, but... )
+
+== There has to be a bEtter way
+
+Back to the basics!
+
+== My quest of new language
+
+[%step]
+- Low memory footprint
+- Performances
+- Compiled
+- I don't like pointers
+
+== And the contenders are
+
+- Rust
+- Go
+
+== Iron What?
+
+.A plate covered in Iron Oxyde, or Rust
+image::https://upload.wikimedia.org/wikipedia/commons/thumb/c/c6/Almindeligt_rust_-_jernoxid.jpg/2560px-Almindeligt_rust_-_jernoxid.jpg[]
+
+== Rust
+
+.Rust Logo
+image::https://www.rust-lang.org/logos/rust-logo-512x512.png[]
+
+== Why Rust?
+
+- Both Rust and Go Look great
+- Rust had more new interesting concepts
+- I'm here to learn new stuff after all
+
+== The Rust Promises
+
+[%step]
+- As fast as C, if not faster
+- Memory Safety
+- Has an interesting type system
+- A good developer experience
+- "Fearless concurrency"
+
+== As fast as C? 
+
+Let's check out the link:https://benchmarksgame-team.pages.debian.net/benchmarksgame/faster/rust.html[The Computer Language Benchmarks Game]
+
+Benchmarks have to be taken for what they are: benchmarks. 
+
+But they prove that Rust's promise is not empty.
+
+== How about the Memory Safety
+
+[%step]
+- No Garbage Collector, fine.
+- No Pointer, fine.
+- Really none of that? What's the trick?
+- Ownership and Borrowing mechanisms
+
+== Type System
+
+Basic types, checked.
+
+- integers: `i8`, `u8`, ..., `i64`, `u64`, `isize`, `usize`
+- floating points: `f32`, `f64`
+- boolean: `true`, `false`
+- strings: `char`
+
+== Type System
+
+Compound types, checked.
+
+- Tuples: `let x: (i32, f64, u8) = (500, 6.4, 1);`
+- Arrays: `let a = [1, 2, 3, 4, 5];`
+
+== Type System: null values
+
+`null` does not exist in Rust
+
+`Option<T>`
+
+== Type Systems: enums (1)
+
+[source, rust]
+----
+enum Action {
+    Click, 
+    MouseMove,
+    Scroll
+}
+----
+
+== Type Systems: enums (2)
+
+[source, rust]
+----
+enum Action {
+    Click(x: u32, y: u32), 
+    MouseMove(x: u32, y: u32),
+    Scroll(length: u32)
+}
+----
+
+== Pattern matching!
+
+[source, rust]
+----
+fn magic_number(action: Action) -> u32
+match action {
+    Action::Click(x, y) => x + y,
+    Action::MouseMove(x, y) => x + y,
+    Action::Scroll(length) => length * 2
+}
+----
+
+== `Option<T>`
+
+[source, rust]
+----
+enum Option<T> {
+    Some(T),
+    None,
+}
+
+fn say_something(something: Option<String>) {
+    match something: 
+        Ok(s) => println!("{}", s),
+        None => println!("I have nothing to say"),
+}
+----
+
+== Let's talk about Ownership
+
+- The compiles allocates and frees memory on our behalf
+- It **must** know when
+- Hence, ownership rules
+
+== Ownership rules
+
+- A value is own by a single variable
+- You can borrow a value as mush you want for read
+- You can borrow for mutation only once at a time
+- Ownership guarantees **no data race is possible**
+
+== Ownership examples
+
+That's the tricky part
+
+(live code \o/)
+
+== Ownership - Move
+
+[source, rust]
+----
+let a = String::from("hello");
+let b = a;
+println!("{}", a); // Compile error
+println!("{}", b); // hello
+----
+
+
+[source, rust]
+----
+let a = 5;
+let b = a;
+println!("{}", a); // 5
+println!("{}", b); // 5
+----
+
+== Ownership - Transfer ownership
+
+[source, rust]
+----
+let s = String::from("hello");
+some_function(s); 
+println!("{}", s); // Compile error :( 
+----
+
+== Ownership - Borrow
+
+[source, rust]
+----
+let s = String::from("hello");
+some_function(&s); 
+println!("{}", s); // hello
+----
+
+== Ownership - Mutable Borrow
+
+[source, rust]
+----
+let s = String::from("hello");
+append_world(&mut s); 
+println!("{}", s); // hello world
+----
+
+== Ownership - Mutable Borrow
+
+[source, rust]
+----
+let mut s = String::from("hello");
+let r1 = &mut s;
+let r2 = &mut s; // simultaneous mutable borrows not allowed
+r1.push_str(" oh oh oh");
+----
+
+== What I liked about learning rust
+
+- `cargo` is awesome
+- Makes you really think a lot about the code write
+- Learn again lew level things
+- Very active and welcoming community
+- Very well suited for system and game programming
+- Still great for higher level things
+- Bindings of libraries **for Rust**
+- The link:https://doc.rust-lang.org/book/second-edition/[Rust Book] is great
+
+== An extra demo
+
+A web application written in Rust using 
+link:https://rocket.rs/[Rocket] and 
+link:http://diesel.rs/[Diesel]
+
+With link:[Maud] as a templating engine
+
+== One more thing
+
+First class support for testing
+
+[source, rust]
+----
+fn main() {
+    println!("{}", add(2, 5));
+}
+
+fn add(a: isize, b: isize) -> isize {
+    a + b
+}
+
+#[cfg(test)]
+mod tests {
+    use super::*;
+
+    #[test]
+    fn test_add() {
+        assert!(add(2, 5) ==  7);
+    }
+}
+----

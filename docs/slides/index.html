@@ -1,0 +1,190 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><title>Iron Oxyde is the new thing</title><meta content="yes" name="apple-mobile-web-app-capable"><meta content="black-translucent" name="apple-mobile-web-app-status-bar-style"><meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui" name="viewport"><link href="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/3.6.0/css/reveal.css" rel="stylesheet"><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/3.6.0/css/theme/black.css" id="theme"><link href="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/3.6.0/lib/css/zenburn.css" rel="stylesheet"><script>var link = document.createElement( 'link' );
+link.rel = 'stylesheet';
+link.type = 'text/css';
+link.href = window.location.search.match( /print-pdf/gi ) ? "https://cdnjs.cloudflare.com/ajax/libs/reveal.js/3.6.0/css/print/pdf.css" : "https://cdnjs.cloudflare.com/ajax/libs/reveal.js/3.6.0/css/print/paper.css";
+document.getElementsByTagName( 'head' )[0].appendChild( link );</script><!--[if lt IE 9]><script src="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/3.6.0/lib/js/html5shiv.js"></script><![endif]--></head><body><div class="reveal"><div class="slides"><section class="title" data-state="title"><h1>Iron Oxyde is the new thing</h1></section><section id="why_learn_a_new_language"><h2>Why learn a new language?</h2><div class="ulist"><ul><li><p>Why not</p></li><li><p>View things from a different angle</p></li><li><p>A different way of writing software</p></li><li><p>It&#8217;s fun</p></li><li><p>Out of frustration</p></li></ul></div></section>
+<section id="you_said_frustration"><h2>You said frustration?</h2><div class="imageblock" style=""><img src="http://imthelion.com/wp-content/uploads/2017/09/frustration-at-work_web-1.jpg" alt="frustration at work web 1"></div><div class="title">Figure 1. My way of working</div></section>
+<section id="frustration"><h2>Frustration</h2><div class="ulist"><ul><li class="fragment"><p>Bloated software</p></li><li class="fragment"><p>My experience with RAD frameworks built on top of other frameowkrs
+(I still &lt;3 you Groovy &amp; Grails)</p></li><li class="fragment"><p><code>null</code> everywhere</p></li><li class="fragment"><p>Loose track of how things work (abstractions are nice, but&#8230;&#8203; )</p></li></ul></div></section>
+<section id="there_has_to_be_a_better_way"><h2>There has to be a bEtter way</h2><div class="paragraph"><p>Back to the basics!</p></div></section>
+<section id="my_quest_of_new_language"><h2>My quest of new language</h2><div class="ulist"><ul><li class="fragment"><p>Low memory footprint</p></li><li class="fragment"><p>Performances</p></li><li class="fragment"><p>Compiled</p></li><li class="fragment"><p>I don&#8217;t like pointers</p></li></ul></div></section>
+<section id="and_the_contenders_are"><h2>And the contenders are</h2><div class="ulist"><ul><li><p>Rust</p></li><li><p>Go</p></li></ul></div></section>
+<section id="iron_what"><h2>Iron What?</h2><div class="imageblock" style=""><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/c/c6/Almindeligt_rust_-_jernoxid.jpg/2560px-Almindeligt_rust_-_jernoxid.jpg" alt="2560px Almindeligt rust   jernoxid"></div><div class="title">Figure 2. A plate covered in Iron Oxyde, or Rust</div></section>
+<section id="rust"><h2>Rust</h2><div class="imageblock" style=""><img src="https://www.rust-lang.org/logos/rust-logo-512x512.png" alt="rust logo 512x512"></div><div class="title">Figure 3. Rust Logo</div></section>
+<section id="why_rust"><h2>Why Rust?</h2><div class="ulist"><ul><li><p>Both Rust and Go Look great</p></li><li><p>Rust had more new interesting concepts</p></li><li><p>I&#8217;m here to learn new stuff after all</p></li></ul></div></section>
+<section id="the_rust_promises"><h2>The Rust Promises</h2><div class="ulist"><ul><li class="fragment"><p>As fast as C, if not faster</p></li><li class="fragment"><p>Memory Safety</p></li><li class="fragment"><p>Has an interesting type system</p></li><li class="fragment"><p>A good developer experience</p></li><li class="fragment"><p>"Fearless concurrency"</p></li></ul></div></section>
+<section id="as_fast_as_c"><h2>As fast as C?</h2><div class="paragraph"><p>Let&#8217;s check out the <a href="https://benchmarksgame-team.pages.debian.net/benchmarksgame/faster/rust.html">The Computer Language Benchmarks Game</a></p></div>
+<div class="paragraph"><p>Benchmarks have to be taken for what they are: benchmarks.</p></div>
+<div class="paragraph"><p>But they prove that Rust&#8217;s promise is not empty.</p></div></section>
+<section id="how_about_the_memory_safety"><h2>How about the Memory Safety</h2><div class="ulist"><ul><li class="fragment"><p>No Garbage Collector, fine.</p></li><li class="fragment"><p>No Pointer, fine.</p></li><li class="fragment"><p>Really none of that? What&#8217;s the trick?</p></li><li class="fragment"><p>Ownership and Borrowing mechanisms</p></li></ul></div></section>
+<section id="type_system"><h2>Type System</h2><div class="paragraph"><p>Basic types, checked.</p></div>
+<div class="ulist"><ul><li><p>integers: <code>i8</code>, <code>u8</code>, &#8230;&#8203;, <code>i64</code>, <code>u64</code>, <code>isize</code>, <code>usize</code></p></li><li><p>floating points: <code>f32</code>, <code>f64</code></p></li><li><p>boolean: <code>true</code>, <code>false</code></p></li><li><p>strings: <code>char</code></p></li></ul></div></section>
+<section id="type_system_2"><h2>Type System</h2><div class="paragraph"><p>Compound types, checked.</p></div>
+<div class="ulist"><ul><li><p>Tuples: <code>let x: (i32, f64, u8) = (500, 6.4, 1);</code></p></li><li><p>Arrays: <code>let a = [1, 2, 3, 4, 5];</code></p></li></ul></div></section>
+<section id="type_system_null_values"><h2>Type System: null values</h2><div class="paragraph"><p><code>null</code> does not exist in Rust</p></div>
+<div class="paragraph"><p><code>Option&lt;T&gt;</code></p></div></section>
+<section id="type_systems_enums_1"><h2>Type Systems: enums (1)</h2><div class="listingblock"><div class="content"><pre class="highlight"><code data-noescape class="rust language-rust">enum Action {
+    Click,
+    MouseMove,
+    Scroll
+}</code></pre></div></div></section>
+<section id="type_systems_enums_2"><h2>Type Systems: enums (2)</h2><div class="listingblock"><div class="content"><pre class="highlight"><code data-noescape class="rust language-rust">enum Action {
+    Click(x: u32, y: u32),
+    MouseMove(x: u32, y: u32),
+    Scroll(length: u32)
+}</code></pre></div></div></section>
+<section id="pattern_matching"><h2>Pattern matching!</h2><div class="listingblock"><div class="content"><pre class="highlight"><code data-noescape class="rust language-rust">fn magic_number(action: Action) -&gt; u32
+match action {
+    Action::Click(x, y) =&gt; x + y,
+    Action::MouseMove(x, y) =&gt; x + y,
+    Action::Scroll(length) =&gt; length * 2
+}</code></pre></div></div></section>
+<section id="optiont"><h2><code>Option&lt;T&gt;</code></h2><div class="listingblock"><div class="content"><pre class="highlight"><code data-noescape class="rust language-rust">enum Option&lt;T&gt; {
+    Some(T),
+    None,
+}
+
+fn say_something(something: Option&lt;String&gt;) {
+    match something:
+        Ok(s) =&gt; println!("{}", s),
+        None =&gt; println!("I have nothing to say"),
+}</code></pre></div></div></section>
+<section id="lets_talk_about_ownership"><h2>Let&#8217;s talk about Ownership</h2><div class="ulist"><ul><li><p>The compiles allocates and frees memory on our behalf</p></li><li><p>It <strong>must</strong> know when</p></li><li><p>Hence, ownership rules</p></li></ul></div></section>
+<section id="ownership_rules"><h2>Ownership rules</h2><div class="ulist"><ul><li><p>A value is own by a single variable</p></li><li><p>You can borrow a value as mush you want for read</p></li><li><p>You can borrow for mutation only once at a time</p></li><li><p>Ownership guarantees <strong>no data race is possible</strong></p></li></ul></div></section>
+<section id="ownership_examples"><h2>Ownership examples</h2><div class="paragraph"><p>That&#8217;s the tricky part</p></div>
+<div class="paragraph"><p>(live code \o/)</p></div></section>
+<section id="ownership_move"><h2>Ownership - Move</h2><div class="listingblock"><div class="content"><pre class="highlight"><code data-noescape class="rust language-rust">let a = String::from("hello");
+let b = a;
+println!("{}", a); // Compile error
+println!("{}", b); // hello</code></pre></div></div>
+<div class="listingblock"><div class="content"><pre class="highlight"><code data-noescape class="rust language-rust">let a = 5;
+let b = a;
+println!("{}", a); // 5
+println!("{}", b); // 5</code></pre></div></div></section>
+<section id="ownership_transfer_ownership"><h2>Ownership - Transfer ownership</h2><div class="listingblock"><div class="content"><pre class="highlight"><code data-noescape class="rust language-rust">let s = String::from("hello");
+some_function(s);
+println!("{}", s); // Compile error :(</code></pre></div></div></section>
+<section id="ownership_borrow"><h2>Ownership - Borrow</h2><div class="listingblock"><div class="content"><pre class="highlight"><code data-noescape class="rust language-rust">let s = String::from("hello");
+some_function(&amp;s);
+println!("{}", s); // hello</code></pre></div></div></section>
+<section id="ownership_mutable_borrow"><h2>Ownership - Mutable Borrow</h2><div class="listingblock"><div class="content"><pre class="highlight"><code data-noescape class="rust language-rust">let s = String::from("hello");
+append_world(&amp;mut s);
+println!("{}", s); // hello world</code></pre></div></div></section>
+<section id="ownership_mutable_borrow_2"><h2>Ownership - Mutable Borrow</h2><div class="listingblock"><div class="content"><pre class="highlight"><code data-noescape class="rust language-rust">let mut s = String::from("hello");
+let r1 = &amp;mut s;
+let r2 = &amp;mut s; // simultaneous mutable borrows not allowed
+r1.push_str(" oh oh oh");</code></pre></div></div></section>
+<section id="what_i_liked_about_learning_rust"><h2>What I liked about learning rust</h2><div class="ulist"><ul><li><p><code>cargo</code> is awesome</p></li><li><p>Makes you really think a lot about the code write</p></li><li><p>Learn again lew level things</p></li><li><p>Very active and welcoming community</p></li><li><p>Very well suited for system and game programming</p></li><li><p>Still great for higher level things</p></li><li><p>Bindings of libraries <strong>for Rust</strong></p></li><li><p>The <a href="https://doc.rust-lang.org/book/second-edition/">Rust Book</a> is great</p></li></ul></div></section>
+<section id="an_extra_demo"><h2>An extra demo</h2><div class="paragraph"><p>A web application written in Rust using
+<a href="https://rocket.rs/">Rocket</a> and
+<a href="http://diesel.rs/">Diesel</a></p></div>
+<div class="paragraph"><p>With <a href="">Maud</a> as a templating engine</p></div></section>
+<section id="one_more_thing"><h2>One more thing</h2><div class="paragraph"><p>First class support for testing</p></div>
+<div class="listingblock"><div class="content"><pre class="highlight"><code data-noescape class="rust language-rust">fn main() {
+    println!("{}", add(2, 5));
+}
+
+fn add(a: isize, b: isize) -&gt; isize {
+    a + b
+}
+
+#[cfg(test)]
+mod tests {
+    use super::*;
+
+    #[test]
+    fn test_add() {
+        assert!(add(2, 5) ==  7);
+    }
+}</code></pre></div></div></section></div></div><script src="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/3.6.0/lib/js/head.min.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/3.6.0/js/reveal.js"></script><script>// See https://github.com/hakimel/reveal.js#configuration for a full list of configuration options
+Reveal.initialize({
+  // Display controls in the bottom right corner
+  controls: true,
+  // Display a presentation progress bar
+  progress: true,
+  // Set a per-slide timing for speaker notes, null means none
+  defaultTiming: null,
+  // Display the page number of the current slide
+  slideNumber: false,
+  // Push each slide change to the browser history
+  history: false,
+  // Enable keyboard shortcuts for navigation
+  keyboard: true,
+  // Enable the slide overview mode
+  overview: true,
+  // Vertical centering of slides
+  center: true,
+  // Enables touch navigation on devices with touch input
+  touch: true,
+  // Loop the presentation
+  loop: false,
+  // Change the presentation direction to be RTL
+  rtl: false,
+  // Randomizes the order of slides each time the presentation loads
+  shuffle: false,
+  // Turns fragments on and off globally
+  fragments: true,
+  // Flags if the presentation is running in an embedded mode,
+  // i.e. contained within a limited portion of the screen
+  embedded: false,
+  // Flags if we should show a help overlay when the questionmark
+  // key is pressed
+  help: true,
+  // Flags if speaker notes should be visible to all viewers
+  showNotes: false,
+  // Global override for autolaying embedded media (video/audio/iframe)
+  // - null: Media will only autoplay if data-autoplay is present
+  // - true: All media will autoplay, regardless of individual setting
+  // - false: No media will autoplay, regardless of individual setting
+  autoPlayMedia: null,
+  // Number of milliseconds between automatically proceeding to the
+  // next slide, disabled when set to 0, this value can be overwritten
+  // by using a data-autoslide attribute on your slides
+  autoSlide: 0,
+  // Stop auto-sliding after user input
+  autoSlideStoppable: true,
+  // Enable slide navigation via mouse wheel
+  mouseWheel: false,
+  // Hides the address bar on mobile devices
+  hideAddressBar: true,
+  // Opens links in an iframe preview overlay
+  previewLinks: false,
+  // Theme (e.g., beige, black, league, night, serif, simple, sky, solarized, white)
+  // NOTE setting the theme in the config no longer works in reveal.js 3.x
+  //theme: Reveal.getQueryHash().theme || 'black',
+  // Transition style (e.g., none, fade, slide, convex, concave, zoom)
+  transition: Reveal.getQueryHash().transition || 'slide',
+  // Transition speed (e.g., default, fast, slow)
+  transitionSpeed: 'default',
+  // Transition style for full page slide backgrounds (e.g., none, fade, slide, convex, concave, zoom)
+  backgroundTransition: 'fade',
+  // Number of slides away from the current that are visible
+  viewDistance: 3,
+  // Parallax background image (e.g., "'https://s3.amazonaws.com/hakim-static/reveal-js/reveal-parallax-1.jpg'")
+  parallaxBackgroundImage: '',
+  // Parallax background size in CSS syntax (e.g., "2100px 900px")
+  parallaxBackgroundSize: '',
+
+  // The "normal" size of the presentation, aspect ratio will be preserved
+  // when the presentation is scaled to fit different resolutions. Can be
+  // specified using percentage units.
+  width: 960,
+  height: 700,
+
+  // Factor of the display size that should remain empty around the content
+  margin: 0.1,
+
+  // Bounds for smallest/largest possible scale to apply to content
+  minScale: 0.2,
+  maxScale: 1.5,
+
+  // Optional libraries used to extend on reveal.js
+  dependencies: [
+      { src: 'https://cdnjs.cloudflare.com/ajax/libs/reveal.js/3.6.0/lib/js/classList.js', condition: function() { return !document.body.classList; } },
+      { src: 'https://cdnjs.cloudflare.com/ajax/libs/reveal.js/3.6.0/plugin/markdown/marked.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+      { src: 'https://cdnjs.cloudflare.com/ajax/libs/reveal.js/3.6.0/plugin/markdown/markdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+      { src: 'https://cdnjs.cloudflare.com/ajax/libs/reveal.js/3.6.0/plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } },
+      { src: 'https://cdnjs.cloudflare.com/ajax/libs/reveal.js/3.6.0/plugin/zoom-js/zoom.js', async: true },
+      { src: 'https://cdnjs.cloudflare.com/ajax/libs/reveal.js/3.6.0/plugin/notes/notes.js', async: true }
+  ]
+});</script></body></html>
