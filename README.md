@@ -1,8 +1,3 @@
-A Rust introduction presentation. 
+Presentations: 
 
-- Written in Asciidoc
-- Uses `make` and `docker` to build the slides
-
-Build: `make`
-
-Show the presentation: `make presentation_mode`
+- Introduction to Rust (Zenika Singapore Technozaure 27/09/2018)
